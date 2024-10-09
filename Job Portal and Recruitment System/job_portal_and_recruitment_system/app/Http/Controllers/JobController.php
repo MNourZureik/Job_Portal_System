@@ -5,6 +5,7 @@ use App\Services\JobService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Database\Query\IndexHint;
 
 class JobController extends Controller
 {
@@ -58,3 +59,6 @@ class JobController extends Controller
     }
 }
 
+
+// index list of ob
+// show

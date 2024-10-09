@@ -19,7 +19,7 @@ class FileException extends Exception
     public function report()
     {
         // Log the exception or send to an error reporting system
-        \Log::error($this->getMessage());
+        //Log::error($this->getMessage());
     }
 
     // Customize the render method for how this exception is shown

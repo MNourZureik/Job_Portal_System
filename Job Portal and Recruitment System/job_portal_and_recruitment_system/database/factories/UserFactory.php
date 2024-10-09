@@ -18,25 +18,13 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $i = array_rand([
-            'job_seeker',
-            'employer',
-            'admin',
-        ]);
-        $role = 'employer';
-        if ($i === 0) {
-            $role = 'job_seeker';
-        }
-        else if ($i === 1) {
-            $role = 'admin';
-        }
-
 
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make(fake()->password()), // password
-            'role' =>  $role,
+            'role' =>  'admin',//$this->faker->randomElement(['job_seeker , employer , admin']),
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 

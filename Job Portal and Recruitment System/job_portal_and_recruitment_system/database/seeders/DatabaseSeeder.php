@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\users\Employer;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,8 +17,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class,
+            EmployerSeeder::class,
+            AdminSeeder::class,
+            JobSeekerSeeder::class,
             JobSeeder::class,
-            ProfileSeeder::class,
         ]);
     }
 }

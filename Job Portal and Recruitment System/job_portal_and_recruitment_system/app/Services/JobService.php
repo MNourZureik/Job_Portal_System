@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -14,11 +15,12 @@ class JobService
     {
         $validatedData = $request->validate(Job::rules());
         $user = JWTAuth::user();
-        $validatedData['user_id'] = $user->id;
-        return Job::create($validatedData);
+
+        $job = Job::create($validatedData);
+        $user->jobs->attach($job->id);
     }
 
-    public function fetchJobs(): \Illuminate\Database\Eloquent\Collection
+    public function fetchJobs(): Collection
     {
         return Job::all();
     }
@@ -49,7 +51,7 @@ class JobService
         return $job->delete();
     }
 
-    public function searchJob(Request $request): \Illuminate\Database\Eloquent\Collection|array
+    public function searchJob(Request $request): Collection|array
     {
         $query = Job::query();
 

@@ -38,7 +38,7 @@ class JWTAuthController extends Controller
             if ($token) {
                 return $this->handleResponse(compact('token'), 'Login successful', 200);
             } else {
-                return $this->handleResponse([], 'Invalid credentials', 401); // Unauthorized
+                return $this->handleResponse([], 'Invalid credentials', 401); 
             }
     }
 

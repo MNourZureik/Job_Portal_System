@@ -13,15 +13,16 @@ class ProfileService
 {
     public function setProfile(ProfileRequest $request)
     {
-        app()->setLocale('ar');
+        $fileService = new FileService();
         $validatedData = $request->validated();
+
         $user = JWTAuth::user();
         $validatedData['user_id'] = $user->id;
 
         try {
-            $validatedData['profile_picture'] = $this->is_has_file($request, $user->profile, 'profile_picture', 'profile_pictures');
-            $validatedData['resume'] = $this->is_has_file($request, $user->profile, 'resume', 'resumes');
-        } catch (FileException $e) {
+            $validatedData['profile_picture'] = $fileService->uploadFile($request, 'profile_picture', 'profile_pictures' );
+            $validatedData['resume'] = $fileService->uploadFile($request, 'resume', 'resumes' );
+        } catch (\Exception $e) {
             return false;
         }
 
@@ -39,19 +40,4 @@ class ProfileService
         return ProfileResource::make($profile);
     }
 
-
-    /**
-     * @throws FileException
-     */
-    public function is_has_file(ProfileRequest $request  , $model , $file_name , $path): bool|string
-    {
-        if ($request->hasFile($file_name)) {
-            if ($model && $model->$file_name) {
-                Storage::delete($model->$file_name);
-            }
-            $originalName = $request->file($file_name)->getClientOriginalName();
-            return $request->file($file_name)->storeAs($path, $originalName);
-        }
-        throw new \App\Exceptions\FileException();
-    }
 }

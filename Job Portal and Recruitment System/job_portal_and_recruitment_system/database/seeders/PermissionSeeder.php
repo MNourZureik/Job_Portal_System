@@ -12,8 +12,8 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         // Creating some permissions :
-        Permission::create(['name' => 'post jobs']);
-        Permission::create(['name' => 'apply for jobs']);
+        // Permission::create(['name' => 'post jobs']);
+        // Permission::create(['name' => 'apply for jobs']);
 
     }
 }
