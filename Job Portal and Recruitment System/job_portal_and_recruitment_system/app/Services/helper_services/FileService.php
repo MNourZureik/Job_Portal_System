@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\helper_services;
 
+use App\Models\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -93,7 +94,14 @@ class FileService
     public function uploadFile($request , $fileName , $directory)
     {
         if ($request->hasFile($fileName)) {
-            return $this->storeFile($request->file($fileName), $directory);
+            $file = $request->file($fileName);
+
+            $fileName = $file->getClientOriginalName();
+            $filePath = $directory . '/' . $fileName;
+
+            $this->deleteFile($filePath);
+
+            return $this->storeFile($file, $directory);
         }
         return null;
     }
@@ -124,5 +132,26 @@ class FileService
         return $uploadedFiles;
     }
 
+    public function store($path , $name , $fileable_id , $fileable_type)
+    {
+        if($path){
+            $file = File::where('path' , $path)->get()->first();
+            if ($file) {
+                if($fileable_id === $file->fileable_id){
+                    $file->forceDelete();
+                }
+            }
+            return File::create(
+                [
+                    'name' => $name,
+                    'path' => $path,
+                    'fileable_id' => $fileable_id,
+                    'fileable_type' => $fileable_type,
+                ]
+            );
+        }
+        return null;
+
+    }
 
 }

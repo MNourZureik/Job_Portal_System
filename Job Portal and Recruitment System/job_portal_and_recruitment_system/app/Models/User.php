@@ -7,6 +7,7 @@ use App\Models\users\Employer;
 use App\Models\users\JobSeeker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticate;
 use Illuminate\Notifications\Notifiable;
@@ -17,10 +18,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticate implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
-    const ROLE_ADMIN = 'admin';
-    const ROLE_JOB_SEEKER = 'job_seeker';
-    const ROLE_EMPLOYER = 'employer';
-
     protected $fillable = [
         'name',
         'email',
@@ -64,22 +61,6 @@ class User extends Authenticate implements JWTSubject
             'password' => 'required|string|min:8',
         ];
     }
-
-
-//    public function isAdmin(): bool
-//    {
-//        return $this->role === self::ROLE_ADMIN;
-//    }
-//
-//    public function isJobSeeker(): bool
-//    {
-//        return $this->role === self::ROLE_JOB_SEEKER;
-//    }
-//
-//    public function isEmployer(): bool
-//    {
-//        return $this->role === self::ROLE_EMPLOYER;
-//    }
 
     public function employers(): HasMany
     {

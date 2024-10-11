@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class JWTAuthController extends Controller
+class AuthController extends Controller
 {
     // User registration
     protected AuthServices $authService;
@@ -20,7 +20,7 @@ class JWTAuthController extends Controller
 
     public function register(Request $request): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-            $user = $this->authService->StoreUser($request);
+            $user = $this->authService->store($request);
             if ($user) {
                 return $this->handleResponse(compact('user'), 'Registration successful', 201); // 201 for successful creation
             } else {
@@ -38,7 +38,7 @@ class JWTAuthController extends Controller
             if ($token) {
                 return $this->handleResponse(compact('token'), 'Login successful', 200);
             } else {
-                return $this->handleResponse([], 'Invalid credentials', 401); 
+                return $this->handleResponse([], 'Invalid credentials', 401);
             }
     }
 

@@ -2,40 +2,40 @@
 
 namespace App\Models\users;
 
+use App\Models\File;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class JobSeeker extends User
+class JobSeeker extends Model
 {
     use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
 
     protected $fillable = [
         'user_id',
-        'profile_image',
-        'resume',
         'skills',
         'experience',
         'education',
         'bio'
     ];
 
-    public function jobSeeker_rules(): array
+    public static function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
-            'resume' => 'nullable|mimes:pdf,doc,docx|max:10240',
-            'skills' => 'nullable|string|max:255',
-            'experience' => 'nullable|string|max:255',
-            'education' => 'nullable|string|max:255',
-            'bio' => 'nullable|string|max:1000'
+            'skills' => 'required|string|max:255',
+            'experience' => 'required|string|max:255',
+            'education' => 'required|string|max:255',
+            'bio' => 'nullable|string|max:1000',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'resume' => 'required|mimes:pdf,doc,docx,ppt,pptx',
         ];
     }
 
@@ -49,4 +49,8 @@ class JobSeeker extends User
         return $this->belongsToMany(Job::class, 'job_seeker_job');
     }
 
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
 }

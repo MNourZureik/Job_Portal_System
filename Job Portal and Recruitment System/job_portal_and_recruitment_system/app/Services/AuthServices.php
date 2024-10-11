@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthServices
 {
-    public function StoreUser(Request $request)
+    public function store(Request $request)
     {
         $request->validate(User::rules(is_register: true));
         $request['password'] = Hash::make($request['password']);
@@ -20,10 +20,5 @@ class AuthServices
     public function login(Request $request): array
     {
         return $request->validate(User::rules());
-    }
-
-    public function listUsers($role)
-    {
-        return User::where('role', $role)->get()->all();
     }
 }

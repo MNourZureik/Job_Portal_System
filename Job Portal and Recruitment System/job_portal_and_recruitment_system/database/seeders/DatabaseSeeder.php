@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
         // Call individual seeders here
         $this->call([
             RoleSeeder::class,
-            PermissionSeeder::class,
-            UserSeeder::class,
-            EmployerSeeder::class,
-            AdminSeeder::class,
-            JobSeekerSeeder::class,
-            JobSeeder::class,
+//            PermissionSeeder::class,
+//            UserSeeder::class,
+//            EmployerSeeder::class,
+//            AdminSeeder::class,
+//            JobSeekerSeeder::class,
+//            JobSeeder::class,
         ]);
     }
 }

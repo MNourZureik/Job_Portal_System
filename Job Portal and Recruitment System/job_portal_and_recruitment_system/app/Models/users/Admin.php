@@ -4,12 +4,14 @@ namespace App\Models\users;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends User
+class Admin extends Model
 {
     use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
 
@@ -19,16 +21,16 @@ class Admin extends User
         'status',
     ];
 
-    public function admin_rules()
+    public static function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',  // Ensure the user_id exists in the users table
             'access_level' => 'required|in:low,medium,high',  // Only allow 'low', 'medium', or 'high' access levels
             'status' => 'required|in:active,inactive,suspended',  // Only allow valid statuses
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

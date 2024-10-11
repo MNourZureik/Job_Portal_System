@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\JobSeekerService;
+use App\Services\EmployerService;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class JobSeekerController extends Controller
+class EmployerController extends Controller
 {
-    protected JobSeekerService $jobSeeker_service ;
+    protected EmployerService $employer_service;
     public function __construct()
     {
-        $this->jobSeeker_service = new JobSeekerService();
+        $this->employer_service = new EmployerService();
     }
 
     /**
@@ -21,7 +21,7 @@ class JobSeekerController extends Controller
      */
     public function store(Request $request): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->jobSeeker_service->store($request);
+        $admin = $this->employer_service->store($request);
         if ($admin) {
             return $this->handleResponse($admin , 'registered successfully' , 201);
         }
@@ -30,16 +30,19 @@ class JobSeekerController extends Controller
 
     public function show($id): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->jobSeeker_service->show($id);
+        $admin = $this->employer_service->show($id);
         if ($admin) {
             return $this->handleResponse($admin , 'show successfully' , 200);
         }
         return $this->handleResponse(null , 'unable to show' , 500);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function update(Request $request): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->jobSeeker_service->update($request);
+        $admin = $this->employer_service->update($request);
         if ($admin) {
             return $this->handleResponse($admin , 'updated successfully' , 200);
         }
@@ -48,7 +51,7 @@ class JobSeekerController extends Controller
 
     public function destroy($id): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->jobSeeker_service->destroy($id);
+        $admin = $this->employer_service->destroy($id);
         if ($admin) {
             return $this->handleResponse(null, 'deleted successfully' , 200);
         }
