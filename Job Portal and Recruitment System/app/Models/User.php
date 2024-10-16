@@ -47,12 +47,13 @@ class User extends Authenticate implements JWTSubject
         return [];
     }
 
-    public static function rules(bool $is_register = false): array
+    public static function rules(bool $is_register = false , bool $is_google = false): array
     {
+        $password = $is_google ? 'nullable' : 'required|string|min:8';
         return $is_register ? [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => $password,
             'role' => 'required|string|in:job_seeker,employer,admin',
             'phone_number' => 'required|string|max:10|min:10',
         ] :

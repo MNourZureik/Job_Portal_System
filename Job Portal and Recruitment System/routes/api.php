@@ -9,9 +9,12 @@ use App\Http\Controllers\AuthController;
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('login', 'login')->middleware('throttle:10,1');
+    Route::get('google', 'google')->middleware('throttle:10,1');
+    Route::get('callBack', 'handleCallBack');
 
     Route::middleware(['auth:api'])->group(function () {
         Route::get('logout', 'logout');
+        Route::post('verify', 'verify');
     });
 }); // Done
 
@@ -35,5 +38,4 @@ Route::prefix('profile')->middleware(['auth:api' , 'role'])->group(function () {
         Route::get('show/{id}', 'show');
     }); // Done
 });
-
 
