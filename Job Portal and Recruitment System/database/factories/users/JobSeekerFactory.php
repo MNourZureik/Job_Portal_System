@@ -19,8 +19,6 @@ class JobSeekerFactory extends Factory
     {
         return [
             'user_id' => User::factory(),  // Associates the job seeker with a random user
-            'profile_image' => $this->faker->imageUrl(300, 300, 'people', true, 'Profile'),  // Generates a random profile image URL
-            'resume' => $this->faker->filePath(),  // Generates a random file path for the resume (you can adjust this based on your actual file storage system)
             'skills' => implode(', ', $this->faker->words(5)),  // Random skills as a comma-separated string
             'experience' => $this->faker->sentence(10),  // Random experience description
             'education' => $this->faker->sentence(6),  // Random education description

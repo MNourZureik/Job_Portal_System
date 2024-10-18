@@ -24,7 +24,6 @@ class EmployerFactory extends Factory
             'company_phone' => $this->faker->phoneNumber,  // Generates a random phone number
             'company_email' => $this->faker->companyEmail,  // Generates a random company email
             'company_website' => $this->faker->url,  // Generates a random company website URL
-            'company_logo' => $this->faker->imageUrl(200, 200, 'business', true, 'Faker'),  // Generates a placeholder company logo URL
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobSeekerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -24,6 +25,7 @@ Route::prefix('profile')->middleware(['auth:api' , 'role'])->group(function () {
         Route::put('update', 'update');
         Route::delete('destroy/{id}', 'destroy');
         Route::get('show/{id}', 'show');
+
     }); // Done
     Route::prefix('admin')->controller(AdminController::class)->group(function () {
         Route::post('store', 'store');
@@ -37,5 +39,13 @@ Route::prefix('profile')->middleware(['auth:api' , 'role'])->group(function () {
         Route::delete('destroy/{id}', 'destroy');
         Route::get('show/{id}', 'show');
     }); // Done
+});
+
+Route::prefix('job')->middleware(['auth:api' , 'role.employer'])->controller(JobController::class)->group(function () {
+    Route::get('index', 'index'); // Done
+    Route::post('store', 'store'); // Done
+    Route::put('update', 'update');
+    Route::delete('destroy/{id}', 'destroy');
+    Route::get('show/{id}', 'show');
 });
 

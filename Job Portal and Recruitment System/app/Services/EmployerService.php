@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\File;
 use App\Models\users\Employer;
-use App\Services\helper_services\FileService;
+use App\Services\helping_services\FileService;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 

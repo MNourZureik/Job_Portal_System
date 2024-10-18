@@ -3,6 +3,7 @@
 namespace App\Models\users;
 
 use App\Models\User;
+use App\Traits\GlobalFunctions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes, GlobalFunctions;
 
     protected $fillable = [
         'user_id',

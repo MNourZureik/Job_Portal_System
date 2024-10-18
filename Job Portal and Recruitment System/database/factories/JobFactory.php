@@ -6,7 +6,7 @@ use App\Models\users\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Job>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\JobListing>
  */
 class JobFactory extends Factory
 {
@@ -30,6 +30,7 @@ class JobFactory extends Factory
             'currency' => $this->faker->currencyCode,  // Generates a random currency code (e.g., USD, EUR)
             'salary_type' => $this->faker->randomElement(['Monthly', 'Yearly', 'Hourly']),  // Random salary type
             'start_date' => $this->faker->date('Y-m-d'),  // Random start date in the format YYYY-MM-DD
+            'end_date' => $this->faker->date('Y-m-d'),
             'required_skills' => implode(', ', $this->faker->words(5)),  // Random skills as a comma-separated string
             'employer_id' => Employer::factory(),  // Associates a job with a randomly generated employer
         ];

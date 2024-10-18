@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\users\Employer;
 use App\Models\users\JobSeeker;
+use App\Traits\GlobalFunctions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,26 +14,25 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Job extends Model
+class JobListing extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable , HasRoles , SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles , SoftDeletes , GlobalFunctions;
 
+    protected $table = 'job_listings';
     protected $fillable = [
         'title',
         'description',
         'job_type',
         'company',
+        'salary',
         'location',
         'city',
         'country',
         'remotely',
-        'salary_range',
         'currency',
         'salary_type',
         'start_date',
         'end_date',
-        'duration',
-        'status',
         'required_skills',
         'employer_id',
     ];
@@ -52,10 +52,7 @@ class Job extends Model
             'salary_type' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
-            'duration' => 'required|string',
-            'status' => 'required|string',
             'required_skills' => 'required|string',
-            'employer_id' => 'required|integer',
         ];
     }
 

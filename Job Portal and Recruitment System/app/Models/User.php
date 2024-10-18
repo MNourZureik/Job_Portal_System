@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Models\users\Admin;
 use App\Models\users\Employer;
 use App\Models\users\JobSeeker;
+use App\Traits\globalFunctions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticate;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +17,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticate implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes , GlobalFunctions;
     protected $fillable = [
         'name',
         'email',

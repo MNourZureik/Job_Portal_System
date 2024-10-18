@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Jobs\SendEmailJob;
+use App\Jobs\SendVerificationCode;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -35,7 +35,7 @@ class AuthServices
         $user = User::where('email', $email)->get()->first();
         $user->verification_code = Crypt::encrypt($verificationCode);
         $user->save();
-        SendEmailJob::dispatch($email , $verificationCode);
+        SendVerificationCode::dispatch($email , $verificationCode);
     }
 
     public function checkVerificationCode($verificationCode): bool

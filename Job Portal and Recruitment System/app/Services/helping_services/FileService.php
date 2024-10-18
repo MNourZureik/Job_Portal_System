@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\helper_services;
+namespace App\Services\helping_services;
 
 use App\Models\File;
 use Illuminate\Support\Facades\Log;

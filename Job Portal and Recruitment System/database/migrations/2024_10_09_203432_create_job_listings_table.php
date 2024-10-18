@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -11,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('job_listings',  static function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->longText('description');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('currency');
             $table->string('salary_type');
             $table->string('start_date');
+            $table->string('end_date');
             $table->string('required_skills');
             $table->foreignId('employer_id')->constrained('employers')->cascadeOnDelete();
             $table->softDeletes();

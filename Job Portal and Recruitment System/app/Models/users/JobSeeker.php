@@ -3,8 +3,9 @@
 namespace App\Models\users;
 
 use App\Models\File;
-use App\Models\Job;
+use App\Models\JobListing;
 use App\Models\User;
+use App\Traits\GlobalFunctions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class JobSeeker extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles ,SoftDeletes, GlobalFunctions;
 
     protected $fillable = [
         'user_id',
@@ -46,7 +47,7 @@ class JobSeeker extends Model
 
     public function jobs(): BelongsToMany
     {
-        return $this->belongsToMany(Job::class, 'job_seeker_job');
+        return $this->belongsToMany(JobListing::class, 'job_seeker_job');
     }
 
     public function files(): MorphMany
