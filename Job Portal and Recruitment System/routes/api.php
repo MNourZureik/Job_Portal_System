@@ -24,7 +24,7 @@ Route::prefix('profile')->middleware(['auth:api' , 'role'])->group(function () {
         Route::post('store', 'store');
         Route::put('update', 'update');
         Route::delete('destroy/{id}', 'destroy');
-        Route::get('show/{id}', 'show');
+        Route::get('fetch/{id}', 'fetch');
 
     }); // Done
     Route::prefix('admin')->controller(AdminController::class)->group(function () {
@@ -42,10 +42,10 @@ Route::prefix('profile')->middleware(['auth:api' , 'role'])->group(function () {
 });
 
 Route::prefix('job')->middleware(['auth:api' , 'role.employer'])->controller(JobController::class)->group(function () {
-    Route::get('index', 'index'); // Done
-    Route::post('store', 'store'); // Done
-    Route::put('update', 'update');
+    Route::get('index', 'index');
+    Route::post('store', 'store');
+    Route::put('update/{id}', 'update');
     Route::delete('destroy/{id}', 'destroy');
-    Route::get('show/{id}', 'show');
-});
+    Route::get('fetch/{id}', 'fetch');
+}); // Done
 
