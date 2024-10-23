@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('city');
             $table->string('country');
-            $table->string('remotely');
+            $table->enum('work_type', ['on-site', 'remote', 'hybrid']);
             $table->string('currency');
             $table->string('salary_type');
             $table->string('start_date');

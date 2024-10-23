@@ -34,7 +34,7 @@ class Employer extends Model
         return [
             'company_name' => 'required|string|max:255',
             'company_address' => 'required|string|max:255',
-            'company_phone' => 'required|string|max:15',  // Phone numbers usually have a max length, you can adjust
+            'company_phone' => 'required|string',  // Phone numbers usually have a max length, you can adjust
             'company_email' => 'required|email|max:255|unique:employers,company_email',
             'company_website' => 'required|url|max:255',  // Optional, but if provided it must be a valid URL
             'company_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',

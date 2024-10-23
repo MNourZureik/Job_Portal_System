@@ -46,7 +46,7 @@ class JobListing extends Model
             'location' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',
-            'remotely' => 'required|string',
+            'work_type' => 'required|in:on-site,remote,hybrid',
             'salary' => 'required|integer',
             'currency' => 'required|string',
             'salary_type' => 'required|string',

@@ -25,7 +25,8 @@ class JobSeeker extends Model
         'skills',
         'experience',
         'education',
-        'bio'
+        'bio',
+        'address',
     ];
 
     public static function rules(): array

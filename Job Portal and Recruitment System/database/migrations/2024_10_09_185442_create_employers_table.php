@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('company_phone');
             $table->string('company_email');
             $table->string('company_website');
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

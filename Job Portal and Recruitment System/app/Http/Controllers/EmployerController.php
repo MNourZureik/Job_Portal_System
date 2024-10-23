@@ -21,18 +21,18 @@ class EmployerController extends Controller
      */
     public function store(Request $request): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->employer_service->store($request);
-        if ($admin) {
-            return $this->handleResponse($admin , 'registered successfully' , 201);
+        $employer = $this->employer_service->store($request);
+        if ($employer) {
+            return $this->handleResponse($employer , 'registered successfully' , 201);
         }
         return $this->handleResponse(null , 'unable to register' , 500);
     }
 
     public function show($id): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->employer_service->show($id);
-        if ($admin) {
-            return $this->handleResponse($admin , 'show successfully' , 200);
+        $employer = $this->employer_service->show($id);
+        if ($employer) {
+            return $this->handleResponse(true, 'show successfully' , 200);
         }
         return $this->handleResponse(null , 'unable to show' , 500);
     }
@@ -42,17 +42,17 @@ class EmployerController extends Controller
      */
     public function update(Request $request): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->employer_service->update($request);
-        if ($admin) {
-            return $this->handleResponse($admin , 'updated successfully' , 200);
+        $employer = $this->employer_service->update($request);
+        if ($employer) {
+            return $this->handleResponse($employer , 'updated successfully' , 200);
         }
         return $this->handleResponse(null , 'unable to update' , 500);
     }
 
     public function destroy($id): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
     {
-        $admin = $this->employer_service->destroy($id);
-        if ($admin) {
+        $employer = $this->employer_service->destroy($id);
+        if ($employer) {
             return $this->handleResponse(null, 'deleted successfully' , 200);
         }
         return $this->handleResponse(null , 'unable to delete' , 500);

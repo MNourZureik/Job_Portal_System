@@ -5,10 +5,9 @@ namespace App\Services;
 use App\Jobs\SendJobNotification;
 use App\Models\JobListing;
 use App\Models\users\Employer;
-use App\Traits\GlobalFunctions;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -16,10 +15,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class JobService
 {
-    use GlobalFunctions;
-    public function list(): Collection
+    public function list()
     {
-        return Cache::remember('all_jobs_list',
+        $jobs = Cache::remember('all_jobs_list',
             600,
             static function () {
                 $jobs = JobListing::with(['employer' => function ($query) {
@@ -32,6 +30,10 @@ class JobService
                     return $jobArray;
                 });
             });
+        if ($jobs->isEmpty()) {
+            return false;
+        }
+        return $jobs;
     }
 
     public function store(Request $request): ?string
@@ -51,7 +53,7 @@ class JobService
         }
     }
 
-    public function fetch(int $id): Model|\Illuminate\Database\Eloquent\Collection|Builder|bool|array|null
+    public function fetch(int $id): Model|Collection|Builder|bool|array|null
     {
         $jobs = Cache::get("all_jobs_list");
 
@@ -95,21 +97,4 @@ class JobService
             return false;
         }
     }
-
-
-//    public function pruneExpiredJobs(): bool
-//    {
-//        try {
-//            $expiredJobs = JobListing::where('start_date', '<', now())->get();
-//
-//            foreach ($expiredJobs as $job) {
-//                $job->delete();
-//            }
-//
-//            return true;
-//        } catch (\Exception $e) {
-//            return false;
-//        }
-//    }
-
 }

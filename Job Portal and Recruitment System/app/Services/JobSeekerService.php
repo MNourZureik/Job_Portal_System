@@ -35,6 +35,16 @@ class JobSeekerService
         if(!$profile_image || !$resume){
             return null;
         }
+        $coordinates = $this->geocodeAddress($jobSeeker->address);
+
+        if ($coordinates) {
+            $jobSeeker->latitude = $coordinates['lat'];
+            $jobSeeker->longitude = $coordinates['lng'];
+        }
+        else {
+            return null;
+        }
+        $jobSeeker->save();
         return $jobSeeker;
     }
 

@@ -1,0 +1,1294 @@
+{
+	"info": {
+		"_postman_id": "cadf6a26-7836-4087-a366-b02341caeb71",
+		"name": "job_portal_and_recruitment_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31004405"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mhmdnwrzryq36@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "11223344",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "employer",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0937681663",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localHost}}/api/auth/register",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "addTokenTo",
+									"value": "queryParam",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mhmdnwrzryq36@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "11223344",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localHost}}/api/auth/login",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg1MDg4MDQsImV4cCI6MTcyODUyNjgwNCwibmJmIjoxNzI4NTA4ODA0LCJqdGkiOiJiTHJ5bFBwMFdwVlVzazFBIiwic3ViIjoiMjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.dgpUML0ny3kO9aITLOsAh8yVz41tc39gkDhrSUTajGw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MjgwNDEyMDIsImV4cCI6MTcyODA1OTIwMiwibmJmIjoxNzI4MDQxMjAyLCJqdGkiOiI2d0tlY3U3REtscGhZdUJCIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.yD9afW2_M2d8EJoILM0596WCPSnZrxy-YhBdKO0Lpik",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MjgwMzcyOTMsImV4cCI6MTcyODA1NTI5MywibmJmIjoxNzI4MDM3MjkzLCJqdGkiOiJaTE1mZDMxYjY0TXNtMWhkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.i_mWwFWGuY8HLGN3N0wUfQdYUCvSgsQU-4UGcjVX_tM",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MjkwNjQ2MTIsImV4cCI6MTcyOTA4MjYxMiwibmJmIjoxNzI5MDY0NjEyLCJqdGkiOiI5MFpPdVh3Z0ZOTVp4OWxXIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.urGgjJrEt-qOhSbFYGJ2BFsiRPetnI11zYgr_Ir4crc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "795847",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{localHost}}/api/auth/verify",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "google_loign",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{localHost}}/api/auth/callBack",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"callBack"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "job",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjk0OTk2NzYsImV4cCI6MTcyOTUxNzY3NiwibmJmIjoxNzI5NDk5Njc2LCJqdGkiOiI5T1V6dFBkS3htY2lKdVRSIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.HVIWtnjN57mDo8ctchA-h6yl0_eXY09XakFItQXAkmM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"title\": \"Software Engineer\",\r\n    \"description\": \"We are looking for a skilled software engineer to join our team.\",\r\n    \"job_type\": \"Full-time\",\r\n    \"company\": \"TechCorp Inc.\",\r\n    \"salary\": 120000,\r\n    \"location\": \"123 Tech Avenue\",\r\n    \"city\": \"San Francisco\",\r\n    \"country\": \"USA\",\r\n    \"remotely\": \"Yes\",\r\n    \"currency\": \"USD\",\r\n    \"salary_type\": \"Annual\",\r\n    \"start_date\": \"2024-11-01\",\r\n    \"end_date\":\"2034-11-01\",\r\n    \"required_skills\": \"PHP, Laravel, MySQL, JavaScript\"\r\n}"
+						},
+						"url": {
+							"raw": "{{localHost}}/api/job/store",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"job",
+								"store"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "flutter developer",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "should know ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MjkyNDk4NjksImV4cCI6MTcyOTI2Nzg2OSwibmJmIjoxNzI5MjQ5ODY5LCJqdGkiOiJ2b0YwWW0yaGIxVWZMSjh6Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.YYsuigTGm_rru4QDkabX9EjoSfQh1adUwKvKUiCJrj4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{localHost}}/api/job/index",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"job",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjk0OTMyNjEsImV4cCI6MTcyOTUxMTI2MSwibmJmIjoxNzI5NDkzMjYxLCJqdGkiOiJkdXNhSnk0b3U2dkhZUHNnIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.prVlashldvk91Ex6uji0QDoRRkxaJXo2MGLPWQr5ul4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"title\": \"AI Engineer\",\r\n    \"description\": \"We are looking for a skilled software engineer to join our team.\",\r\n    \"job_type\": \"Full-time\",\r\n    \"company\": \"TechCorp Inc.\",\r\n    \"salary\": 120000,\r\n    \"location\": \"123 Tech Avenue\",\r\n    \"city\": \"San Francisco\",\r\n    \"country\": \"USA\",\r\n    \"remotely\": \"NO\",\r\n    \"currency\": \"USD\",\r\n    \"salary_type\": \"Annual\",\r\n    \"start_date\": \"2024-11-01\",\r\n    \"end_date\":\"2034-11-01\",\r\n    \"required_skills\": \"PHP, Laravel, MySQL, JavaScript\",\r\n    \"_method\":\"PUT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localHost}}/api/job/update/1",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"job",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjk0OTMyNjEsImV4cCI6MTcyOTUxMTI2MSwibmJmIjoxNzI5NDkzMjYxLCJqdGkiOiJkdXNhSnk0b3U2dkhZUHNnIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.prVlashldvk91Ex6uji0QDoRRkxaJXo2MGLPWQr5ul4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{localHost}}/api/job/destroy/1",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"job",
+								"destroy",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjk0OTk2NzYsImV4cCI6MTcyOTUxNzY3NiwibmJmIjoxNzI5NDk5Njc2LCJqdGkiOiI5T1V6dFBkS3htY2lKdVRSIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.HVIWtnjN57mDo8ctchA-h6yl0_eXY09XakFItQXAkmM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{localHost}}/api/job/fetch/1",
+							"host": [
+								"{{localHost}}"
+							],
+							"path": [
+								"api",
+								"job",
+								"fetch",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MjkyNDk4NjksImV4cCI6MTcyOTI2Nzg2OSwibmJmIjoxNzI5MjQ5ODY5LCJqdGkiOiJ2b0YwWW0yaGIxVWZMSjh6Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.YYsuigTGm_rru4QDkabX9EjoSfQh1adUwKvKUiCJrj4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "access_level",
+											"value": "low",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "inactive",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/_1f0884c5-6efb-4d93-b3ef-f51e917d18a2.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/admin/store",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"admin",
+										"store"
+									],
+									"query": [
+										{
+											"key": "access_level",
+											"value": "low",
+											"disabled": true
+										},
+										{
+											"key": "status",
+											"value": "inactive",
+											"disabled": true
+										},
+										{
+											"key": "profile_image",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2NjAzNTAsImV4cCI6MTcyODY3ODM1MCwibmJmIjoxNzI4NjYwMzUwLCJqdGkiOiIxSVljYlVVWVdnVjRFQVlmIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.q0EGBevwfYIia4SjpyreMRyzKRmW5BAUk95-LrIlrjQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "access_level",
+											"value": "high",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "suspended",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/1.png"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/admin/update",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"admin",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2NjAwMzcsImV4cCI6MTcyODY3ODAzNywibmJmIjoxNzI4NjYwMDM3LCJqdGkiOiJydXBzVWpGaEt0WjR2VjlVIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.i8XMwvP6qXzDa-yfsiK2MGckPK6A2ChEmqHqItx8-mc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{localHost}}/api/profile/admin/show/1",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"admin",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2NzU4MjgsImV4cCI6MTcyODY5MzgyOCwibmJmIjoxNzI4Njc1ODI4LCJqdGkiOiJvdnhmOG1iY3N1T0JJWVZiIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.wbAN6Sjxo7a9a3K0nfgb2y38HY1_TbN3h-pIWuTi7ps",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{localHost}}/api/profile/admin/destroy/1",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"admin",
+										"destroy",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "employer",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjk0OTk2NzYsImV4cCI6MTcyOTUxNzY3NiwibmJmIjoxNzI5NDk5Njc2LCJqdGkiOiI5T1V6dFBkS3htY2lKdVRSIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.HVIWtnjN57mDo8ctchA-h6yl0_eXY09XakFItQXAkmM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_name",
+											"value": "aldr",
+											"type": "text"
+										},
+										{
+											"key": "company_address",
+											"value": "maza",
+											"type": "text"
+										},
+										{
+											"key": "company_phone",
+											"value": "0937681663",
+											"type": "text"
+										},
+										{
+											"key": "company_email",
+											"value": "aldr@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "company_website",
+											"value": "https://aldrtech.sy/",
+											"type": "text"
+										},
+										{
+											"key": "company_logo",
+											"type": "file",
+											"src": "postman-cloud:///1ef880d7-6bee-48b0-94ae-821d3f5566df"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/employer/store",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"employer",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2Nzk1MDYsImV4cCI6MTcyODY5NzUwNiwibmJmIjoxNzI4Njc5NTA2LCJqdGkiOiJHUDJiSzFjVzI4aGNlaUhWIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Cpxjgidtfz98ULpilFzNhaMYpG4Qsz7oFiSA0fYDarM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_name",
+											"value": "alder_tech",
+											"type": "text"
+										},
+										{
+											"key": "company_address",
+											"value": "akram",
+											"type": "text"
+										},
+										{
+											"key": "company_phone",
+											"value": "0937681663",
+											"type": "text"
+										},
+										{
+											"key": "company_email",
+											"value": "alder_tech@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "company_website",
+											"value": "https://aldrtech.sy/",
+											"type": "text"
+										},
+										{
+											"key": "company_logo",
+											"type": "file",
+											"src": "postman-cloud:///1ef8810d-0a2a-48f0-9ca8-f1177d6631d2"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/employer/update",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"employer",
+										"update"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2Nzc4MjcsImV4cCI6MTcyODY5NTgyNywibmJmIjoxNzI4Njc3ODI3LCJqdGkiOiJiYkcwS2R0VTFNeXJ4aE1QIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LBM8dF-hv28CbvFLDC6yN6KEIDw2K6bmMUrM5DBU9X8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/employer/show/1",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"employer",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2Nzk1MDYsImV4cCI6MTcyODY5NzUwNiwibmJmIjoxNzI4Njc5NTA2LCJqdGkiOiJHUDJiSzFjVzI4aGNlaUhWIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Cpxjgidtfz98ULpilFzNhaMYpG4Qsz7oFiSA0fYDarM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{localHost}}/api/profile/employer/destroy/1",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"employer",
+										"destroy",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "job_seeker",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2ODE1NDYsImV4cCI6MTcyODY5OTU0NiwibmJmIjoxNzI4NjgxNTQ2LCJqdGkiOiI1SEJMN1pFaTJES3E0NWNaIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nPa_uHsiXFJXaz4PzPmjUUDzPdhZ7dmtKRI8_iMoDSo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "skills",
+											"value": "html , css , js",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "2 years with aldr tech company",
+											"type": "text"
+										},
+										{
+											"key": "education",
+											"value": "AI Engineer",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "I love Pizza",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/_1f0884c5-6efb-4d93-b3ef-f51e917d18a2.png"
+										},
+										{
+											"key": "resume",
+											"type": "file",
+											"src": "/D:/علاماتي/Mouhamad Nour Zureik.pdf"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/job_seeker/store",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"job_seeker",
+										"store"
+									],
+									"query": [
+										{
+											"key": "skills",
+											"value": "html , css , js",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "2 years with aldr tech company",
+											"disabled": true
+										},
+										{
+											"key": "education",
+											"value": "AI Engineer",
+											"disabled": true
+										},
+										{
+											"key": "bio",
+											"value": "I love pizza",
+											"disabled": true
+										},
+										{
+											"key": "profile_image",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2ODE1NDYsImV4cCI6MTcyODY5OTU0NiwibmJmIjoxNzI4NjgxNTQ2LCJqdGkiOiI1SEJMN1pFaTJES3E0NWNaIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nPa_uHsiXFJXaz4PzPmjUUDzPdhZ7dmtKRI8_iMoDSo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "skills",
+											"value": "html , css , js",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "2 years with aldr tech company",
+											"type": "text"
+										},
+										{
+											"key": "education",
+											"value": "AI Engineer",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "I love Pizza too much",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/pic 3/20240811181532_IMG_4325.JPG"
+										},
+										{
+											"key": "resume",
+											"type": "file",
+											"src": "/D:/علاماتي/Mouhamad Nour Zureik.pdf"
+										},
+										{
+											"key": "_method",
+											"value": "PUT",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{localHost}}/api/profile/job_seeker/update",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"job_seeker",
+										"update"
+									],
+									"query": [
+										{
+											"key": "skills",
+											"value": "html , css , js",
+											"disabled": true
+										},
+										{
+											"key": "experience",
+											"value": "2 years with aldr tech company",
+											"disabled": true
+										},
+										{
+											"key": "education",
+											"value": "AI Engineer",
+											"disabled": true
+										},
+										{
+											"key": "bio",
+											"value": "I love Pizza",
+											"disabled": true
+										},
+										{
+											"key": "profile_image",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "resume",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2ODE1NDYsImV4cCI6MTcyODY5OTU0NiwibmJmIjoxNzI4NjgxNTQ2LCJqdGkiOiI1SEJMN1pFaTJES3E0NWNaIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nPa_uHsiXFJXaz4PzPmjUUDzPdhZ7dmtKRI8_iMoDSo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localHost}}/api/profile/job_seeker/show/1",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"job_seeker",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3Mjg2ODM4NDQsImV4cCI6MTcyODcwMTg0NCwibmJmIjoxNzI4NjgzODQ0LCJqdGkiOiJzSnNsOGJ4YVNuUlpGUE52Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.YzuUV-bLpF6x4fNJDUWkIPbnRQElU7ADHqFqKGxTSIU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{localHost}}/api/profile/job_seeker/destroy/2",
+									"host": [
+										"{{localHost}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"job_seeker",
+										"destroy",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

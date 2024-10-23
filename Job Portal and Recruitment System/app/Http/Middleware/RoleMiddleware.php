@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Middleware;
 
@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class RoleMiddleware
@@ -18,7 +19,7 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next): Response
     {
                 $controller = new Controller();
-                $user = auth()->user();
+                $user = JWTAuth::user();
 
                 if ($user) {
 

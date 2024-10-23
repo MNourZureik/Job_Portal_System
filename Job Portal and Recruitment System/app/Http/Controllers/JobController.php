@@ -68,23 +68,9 @@ class JobController extends Controller
         $deleted = $this->jobService->destroy($id);
 
         if ($deleted) {
-            Cache::forget("job_{$id}");
             return $this->handleResponse(null, 'JobListing deleted successfully', 200);
         }
 
         return $this->handleResponse([], 'JobListing deletion failed', 500);
     }
-
-//    // Archive expired jobs (pruning functionality)
-//    public function pruneExpiredJobs(): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
-//    {
-//        $pruned = $this->jobService->pruneExpiredJobs();
-//
-//        if ($pruned) {
-//            Cache::flush();
-//            return $this->handleResponse(null, 'Expired jobs pruned successfully', 200);
-//        }
-//
-//        return $this->handleResponse([], 'Failed to prune expired jobs', 500);
-//    }
 }

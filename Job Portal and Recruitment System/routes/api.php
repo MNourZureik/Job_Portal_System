@@ -49,3 +49,4 @@ Route::prefix('job')->middleware(['auth:api' , 'role.employer'])->controller(Job
     Route::get('fetch/{id}', 'fetch');
 }); // Done
 
+
